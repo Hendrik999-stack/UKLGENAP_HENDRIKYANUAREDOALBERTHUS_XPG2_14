@@ -19,7 +19,7 @@ while (true)
     {
         Stand.TampilInfo();
     }
-    Console.WriteLine("1. Sewa\n2. Kembali\n3. keluar");
+    Console.WriteLine("1. Sewa Stand\n2. Akhiri Sewa Stand\n3. Keluar");
     Console.Write("Pilihan: ");
     string pilihan = Console.ReadLine();
     if (pilihan == "1")
@@ -54,7 +54,7 @@ while (true)
     }
     else if (pilihan == "2")
     {
-        Console.Write("Nama stand yang disewa: ");
+        Console.Write("Nama stand yang ingin diakhiri: ");
         string stand_sewa = Console.ReadLine();
 
         var cari_Stand = dataStand.FirstOrDefault(ck => string.Equals(stand_sewa, ck.namaStand, StringComparison.OrdinalIgnoreCase));
@@ -62,28 +62,24 @@ while (true)
         if (cari_Stand == null)
         {
 
-            Console.WriteLine($"\n Stand dengan nama `{stand_sewa}` Tidak ditemukan");
+            Console.WriteLine($"\n Stand tidak ditemukan");
 
         }
         else if (!cari_Stand.isAvailable)
         {
-            Console.Write("\nInput jumlah hari: ");
-            int hari = int.Parse(Console.ReadLine());
-
-            double total_sewa = cari_Stand.HitungTotalSewa(hari);
-
-            Console.WriteLine($"Total Pembayaran Sewa: Rp {total_sewa} ");
             cari_Stand.UbahStatus();
-        }
-        else
-        {
-            Console.WriteLine($"\n Stand dengan nama `{stand_sewa}` Tersedia");
+            Console.WriteLine($"\n Sewa stand `{cari_Stand.namaStand}` berhasil diakhiri");
         }
 
     }
+    else if (pilihan == "3")
+    {
+        Console.WriteLine("\nTerima kasih telah menggunakan Moklet Expo Management Center!");
+        break;
+    }
     else
     {
-        Console.WriteLine("\npilihan invalid");
+        Console.WriteLine("\nPilihan Invalid");
     }
 
     Console.WriteLine("\nTekan ENTER untuk mengulang");
