@@ -5,7 +5,8 @@
  new StandIndoor("Indoor-1", 700000),
  new StandIndoor("Indoor-2", 800000),
  new StandPremium("Premium-1", 1800000),
- new StandPremium("Premium-2", 2000000)
+ new StandPremium("Premium-2", 2000000),
+ new StandPremium("Premium-2", 2000000),
 };
 
 
@@ -40,6 +41,7 @@ while (true)
         {
             Console.Write("\nInput jumlah hari: ");
             int hari = int.Parse(Console.ReadLine());
+
 
             double total_sewa = cari_Stand.HitungTotalSewa(hari);
 
@@ -158,12 +160,12 @@ class Stand
 
 class StandOutdoor : Stand
 {
-    protected double _biayatenda;
+    private double _biayatenda = 75000;
 
     public StandOutdoor(string namaStand, double hargaSewaPerHari) : base(namaStand, hargaSewaPerHari)
     {
-        _biayatenda = 75000;
-    }
+        
+    }   
 
     public override double HitungTotalSewa(int jumlahHari)
     {
@@ -173,7 +175,7 @@ class StandOutdoor : Stand
 
 class StandIndoor : Stand
 {
-    protected double _biayalistrik;
+    private double _biayalistrik;
 
     public StandIndoor(string namaStand, double hargaSewaPerHari) : base(namaStand, hargaSewaPerHari)
     {
@@ -188,7 +190,7 @@ class StandIndoor : Stand
 
 class StandPremium : Stand
 {
-    protected double _biayaKeamanan;
+    private double _biayaKeamanan;
 
     public StandPremium(string namaStand, double hargaSewaPerHari) : base(namaStand, hargaSewaPerHari)
     {
